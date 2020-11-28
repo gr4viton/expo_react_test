@@ -1,5 +1,9 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
+
+import { Image, StyleSheet } from 'react-native';
+import logo from '../assets/images/hi_hide.jpg';
+
+
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
@@ -9,6 +13,7 @@ import { Gyroscope } from 'expo-sensors';
 export default function TabOneScreen() {
   return (
     <View style={styles.container}>
+      <Image source={logo} style={styles.logo} />
       <Text style={styles.title}>FOO</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <EditScreenInfo label="really the path is" path="/screens/TabOneScreen.tsx" />
@@ -34,4 +39,5 @@ const styles = StyleSheet.create({
     height: 5,
     width: '10%',
   },
+  logo: { width: 305, height: 159, marginBottom: 10 }
 });
