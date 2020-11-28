@@ -44,15 +44,9 @@ export default function TabOneScreen() {
         await Sharing.shareAsync(selectedImage.localUri);
     };
 
+    var selected_image_uri = img_blank
     if (selectedImage !== null) {
-        return (
-            <View style={styles.container}>
-            <Image source={{ uri: selectedImage.localUri }} style={styles.thumbnail} />
-            <TouchableOpacity onPress={openShareDialogAsync} style={styles.button}>
-            <Text style={styles.buttonText}>Share this photo</Text>
-            </TouchableOpacity>
-            </View>
-        );
+        selected_image_uri = selectedImage.localUri
     };
 
     return (
@@ -64,6 +58,7 @@ export default function TabOneScreen() {
         <Text style={styles.buttonText}>IMAGE DESTRUCTION</Text>
         </TouchableOpacity>
 
+        <Image source={{ uri: selected_image_uri }} style={styles.logo} />
 
         <TouchableOpacity
         onPress={() => alert('GOT YA PAL!')}
@@ -72,6 +67,7 @@ export default function TabOneScreen() {
         </TouchableOpacity>
 
         <Image source={logo} style={styles.logo} />
+
         <Text style={styles.title}>FOO</Text>
         <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
         <EditScreenInfo label="really the path is" path="/screens/TabOneScreen.tsx" />
@@ -99,7 +95,7 @@ const styles = StyleSheet.create({
         width: '10%',
     },
     logo: {
-        width: 305, height: 139,
+        width: 305, height: 109,
         overflow: 'hidden',
         marginBottom: 10,
         transform: [{translateX: -5}, {rotate: '2deg'}],
