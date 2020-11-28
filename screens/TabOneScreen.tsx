@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { Image, StyleSheet, TouchableOpacity } from 'react-native';
 import logo from '../assets/images/hi_hide.jpg';
+import img_blank from '../assets/images/hi_hide.jpg';
 
 import * as ImagePicker from 'expo-image-picker';
 
@@ -12,6 +13,7 @@ import { Gyroscope } from 'expo-sensors';
 
 export default function TabOneScreen() {
     const [selectedImage, setSelectedImage] = React.useState(null);
+    const [selectedImageUri, setSelectedImageUri] = React.useState(null);
 
     let openImagePickerAsync = async () => {
         let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
@@ -33,15 +35,10 @@ export default function TabOneScreen() {
     };
 
     if (selectedImage !== null) {
-        return (
-            <View style={styles.container}>
-            <Image
-            source={{ uri: selectedImage.localUri }}
-            style={styles.thumbnail}
-            />
-            </View>
-        );
-    };
+        setSelectedImageUri({ uri: selectedImage.localUri }) ;
+    } else {
+        setSelectedImageUri({ uri: img_blank.localUri }) ;
+    }
 
 
     return (
@@ -52,6 +49,8 @@ export default function TabOneScreen() {
         style={styles.button2}>
         <Text style={styles.buttonText}>IMAGE DESTRUCTION</Text>
         </TouchableOpacity>
+
+        <Image source={{ uri: selectedImageUri }} style={styles.thumbnail} />
 
         <TouchableOpacity
         onPress={() => alert('GOT YA PAL!')}
@@ -86,7 +85,12 @@ const styles = StyleSheet.create({
         height: 5,
         width: '10%',
     },
-    logo: { width: 305, height: 159, marginBottom: 10 },
+    logo: {
+        width: 305, height: 139,
+        overflow: 'hidden',
+        marginBottom: 10,
+        transform: [{translateX: -5}, {rotate: '2deg'}],
+    },
     button: { backgroundColor: 'green' },
     button2: { backgroundColor: 'gray' },
     buttonText: { fontSize: 42, color: '#acdc42' },
