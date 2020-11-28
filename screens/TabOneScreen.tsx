@@ -5,6 +5,7 @@ import logo from '../assets/images/hi_hide.jpg';
 import img_blank from '../assets/images/hi_hide.jpg';
 
 import * as ImagePicker from 'expo-image-picker';
+import * as Sharing from 'expo-sharing';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
@@ -13,7 +14,6 @@ import { Gyroscope } from 'expo-sensors';
 
 export default function TabOneScreen() {
     const [selectedImage, setSelectedImage] = React.useState(null);
-    const [selectedImageUri, setSelectedImageUri] = React.useState(null);
 
     let openImagePickerAsync = async () => {
         let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
@@ -34,12 +34,26 @@ export default function TabOneScreen() {
         setSelectedImage({ localUri: pickerResult.uri });
     };
 
-    if (selectedImage !== null) {
-        setSelectedImageUri({ uri: selectedImage.localUri }) ;
-    } else {
-        setSelectedImageUri({ uri: img_blank.localUri }) ;
-    }
+    let openShareDialogAsync = async () => {
+        if (!(await Sharing.isAvailableAsync())) {
+            alert(`Uh oh, sharing isn't available on your platform`);
+            return;
+        };
 
+
+        await Sharing.shareAsync(selectedImage.localUri);
+    };
+
+    if (selectedImage !== null) {
+        return (
+            <View style={styles.container}>
+            <Image source={{ uri: selectedImage.localUri }} style={styles.thumbnail} />
+            <TouchableOpacity onPress={openShareDialogAsync} style={styles.button}>
+            <Text style={styles.buttonText}>Share this photo</Text>
+            </TouchableOpacity>
+            </View>
+        );
+    };
 
     return (
         <View style={styles.container}>
@@ -50,7 +64,6 @@ export default function TabOneScreen() {
         <Text style={styles.buttonText}>IMAGE DESTRUCTION</Text>
         </TouchableOpacity>
 
-        <Image source={{ uri: selectedImageUri }} style={styles.thumbnail} />
 
         <TouchableOpacity
         onPress={() => alert('GOT YA PAL!')}
