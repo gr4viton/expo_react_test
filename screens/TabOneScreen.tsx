@@ -64,6 +64,7 @@ export default function TabOneScreen() {
         <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
         <EditScreenInfo label="really the path is" path="/screens/TabOneScreen.tsx" />
         <Text>1AAAAAAfter TabOneScreen</Text>
+
         </View>
     );
 }
@@ -88,5 +89,10 @@ const styles = StyleSheet.create({
     logo: { width: 305, height: 159, marginBottom: 10 },
     button: { backgroundColor: 'green' },
     button2: { backgroundColor: 'gray' },
-    buttonText: { fontSize: 42, color: '#acdc42' }
+    buttonText: { fontSize: 42, color: '#acdc42' },
+    thumbnail: {
+        width: 42,
+        height: 42,
+        resizeMode: "contain"
+    }
 });
