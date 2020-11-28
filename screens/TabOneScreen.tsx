@@ -16,8 +16,8 @@ export default function TabOneScreen() {
     
       <TouchableOpacity
         onPress={() => alert('GOT YA PAL!')}
-        style={{ backgroundColor: 'blue' }}>
-        <Text style={{ fontSize: 50, color: '#fff' }}>Click me!</Text>
+        style={styles.button}>
+        <Text style={styles.buttonText}>Click me!</Text>
       </TouchableOpacity>
 
       <Image source={logo} style={styles.logo} />
@@ -46,5 +46,7 @@ const styles = StyleSheet.create({
     height: 5,
     width: '10%',
   },
-  logo: { width: 305, height: 159, marginBottom: 10 }
+  logo: { width: 305, height: 159, marginBottom: 10 },
+  button: { backgroundColor: 'green' },
+  buttonText: { fontSize: 42, color: '#acdc42' }
 });
