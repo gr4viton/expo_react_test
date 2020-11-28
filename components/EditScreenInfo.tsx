@@ -6,23 +6,27 @@ import Colors from '../constants/Colors';
 import { MonoText } from './StyledText';
 import { Text, View } from './Themed';
 
-export default function EditScreenInfo({ path }: { path: string }) {
+export default function EditScreenInfo({ label, path }: { label:string, path: string }) {
   return (
     <View>
       <View style={styles.getStartedContainer}>
-        <Text
-          style={styles.getStartedText}
-          lightColor="rgba(0,0,0,0.8)"
-          darkColor="rgba(255,255,255,0.8)">
-          Open up the code for this screen:
-        </Text>
+          <View style={styles.getStartedContainer2}>
+            <Text
+              style={styles.getStarted2Text}
+              lightColor="rgba(0,250,240,0.8)"
+              darkColor="rgba(255,55,55,0.8)">
+              Open up the code for this screenix:
+            </Text>
+          </View>
 
         <View
           style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
           darkColor="rgba(255,255,255,0.05)"
           lightColor="rgba(0,0,0,0.05)">
+          <Text>{label}: </Text>
           <MonoText>{path}</MonoText>
         </View>
+        <Text>AAAAfter path in EditScreenInfo</Text>
 
         <Text
           style={styles.getStartedText}
@@ -79,6 +83,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginHorizontal: 50,
   },
+  getStartedContainer2: {
+    alignItems: 'center',
+    marginHorizontal: 100,
+    fontSize: 100,
+  },
   homeScreenFilename: {
     marginVertical: 7,
   },
@@ -86,11 +95,17 @@ const styles = StyleSheet.create({
     color: 'rgba(96,100,109, 0.8)',
   },
   codeHighlightContainer: {
-    borderRadius: 3,
-    paddingHorizontal: 4,
+    borderRadius: 30,
+    paddingHorizontal: 40,
   },
   getStartedText: {
     fontSize: 17,
+    lineHeight: 24,
+    textAlign: 'center',
+  },
+  getStarted2Text: {
+    fontSize: 27,
+    transform: [{rotate: '42deg'}],
     lineHeight: 24,
     textAlign: 'center',
   },
