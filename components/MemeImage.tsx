@@ -24,7 +24,7 @@ export default class MemeImage extends React.Component {
         //when state changes the width changes
         // from https://stackoverflow.com/a/37831144
         const img_style = {
-          width: this.state.rotated
+            transform: [{translateX: this.state.rotated}]
         }
 
         return (
