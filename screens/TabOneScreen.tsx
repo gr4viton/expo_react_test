@@ -20,7 +20,7 @@ export default function TabOneScreen() {
     // returns the html constructed by react elements?
     // went through expo docs
 
-    const [selectedImage, setSelectedImage] = React.useState(img_blank);
+    const [selectedImage, setSelectedImage] = React.useState(null);
 
     let openImagePickerAsync = async () => {
         let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
@@ -57,7 +57,6 @@ export default function TabOneScreen() {
     return (
         <View style={styles.container}>
 
-        <ToggleButton/>
 
         {/* img selector */}
         <TouchableOpacity
@@ -68,7 +67,21 @@ export default function TabOneScreen() {
 
         {/* selected one */}
 
-        <Image source={{ uri: selectedImage.localUri }} style={styles.thumbnail} /> 
+        {
+            selectedImage !== null
+                ? <Image source={{uri: selectedImage.localUri }} style={styles.thumbnail} />
+                : <Image source={logo} style={styles.thumbnail} />
+        }
+
+        {/* 
+            <Image source={{ uri: selectedImage.localUri }} style={styles.thumbnail} /> 
+        */}
+        {/* nullator */}
+        <TouchableOpacity
+        onPress={() => setSelectedImage(null)}
+        style={styles.button}>
+        <Text style={styles.buttonText}>NULL IT!</Text>
+        </TouchableOpacity>
 
         {/* clickbait */}
         <TouchableOpacity
@@ -80,9 +93,13 @@ export default function TabOneScreen() {
         {/* harold */}
         <Image source={logo} style={styles.logo} />
 
+
         <Text style={styles.title}>FOO</Text>
         <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
         <EditScreenInfo label="really the path is" path="/screens/TabOneScreen.tsx" />
+
+        <ToggleButton/>
+
         <Text>1AAAAAAfter TabOneScreen</Text>
 
         </View>
