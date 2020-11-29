@@ -52,14 +52,15 @@ export default function TabOneScreen() {
         await Sharing.shareAsync(selectedImage.localUri);
     };
 
-    var selected_image_uri = Image.resolveAssetSource(img_blank).uri
+    // var selected_image_uri = Image.resolveAssetSource(img_blank).uri
 
-    if (selectedImage !== null) {
-        selected_image_uri = selectedImage.localUri
-    };
+    //if (selectedImage !== null) {
+        //selected_image_uri = selectedImage.localUri
+    //};
 
     return (
         <View style={styles.container}>
+        {/* <ClockSimple/> */}
 
         {/* img selector */}
         <TouchableOpacity
@@ -69,13 +70,26 @@ export default function TabOneScreen() {
         </TouchableOpacity>
 
         {/* selected one */}
-        <Image source={{ uri: selected_image_uri }} style={styles.logo} /> 
+        {/* 
+            <Image source={{ uri: selected_image_uri }} style={styles.logo} /> 
+            {selectedImage !== null ? { uri: selectedImage.localUri } : img_blank}
+            */}
+
+        {
+            selectedImage !== null ? { 
+                <Image source={{ uri: selectedImage.localUri }}
+                style={styles.thumbnail} /> 
+            } : {
+                <Image source={{ img_blank }}
+                style={styles.thumbnail} /> 
+            }
+        }
 
         {/* clickbait */}
         <TouchableOpacity
-        onPress={() => alert('GOT YA PAL!')}
+        onPress={() => alert('I am NOT YOUR PAL, BODY!')}
         style={styles.button}>
-        <Text style={styles.buttonText}>click me!</Text>
+        <Text style={styles.buttonText}>CLICK ON ME PAL!</Text>
         </TouchableOpacity>
 
         {/* harold */}
@@ -115,7 +129,7 @@ const styles = StyleSheet.create({
     },
     button: { backgroundColor: 'green' },
     button2: { backgroundColor: 'gray' },
-    buttonText: { fontSize: 42, color: '#acdc42' },
+    buttonText: { fontSize: 22, color: '#acdc42' },
     thumbnail: {
         width: 42,
         height: 42,
