@@ -15,25 +15,25 @@ export default class ClockSimple extends React.Component {
         this.state = {date: new Date()};
     }
 
-  componentDidMount() {
-    this.timerID = setInterval(
-      () => this.tick(),
-      1000
-    );
-  }
+    componentDidMount() {
+        this.timerID = setInterval(
+            () => this.tick(),
+                1000
+        );
+    }
 
-  componentWillUnmount() {
-    clearInterval(this.timerID);
-  }
+    componentWillUnmount() {
+        clearInterval(this.timerID);
+    }
 
-  tick() {    this.setState({      date: new Date()    });  }
-  render() {
-    return (
-        <View style={styles.container}>
-      <Text style={styles.title}>It is {this.state.date.toLocaleTimeString()}.</Text>
-        </View>
-    );
-  }
+    tick() {    this.setState({      date: new Date()    });  }
+    render() {
+        return (
+            <View style={styles.container}>
+            <Text style={styles.title}>It is {this.state.date.toLocaleTimeString()}.</Text>
+            </View>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
