@@ -11,6 +11,7 @@ import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 
 import ToggleButton from '../components/toggle_button';
+import MemeImage from '../components/MemeImage';
 
 
 import { Gyroscope } from 'expo-sensors';
@@ -92,6 +93,8 @@ export default function TabOneScreen() {
 
         {/* harold */}
         <Image source={logo} style={styles.logo} />
+
+        <MemeImage />
 
         <ToggleButton/>
 
