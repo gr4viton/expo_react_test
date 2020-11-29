@@ -20,7 +20,7 @@ export default function TabOneScreen() {
     // returns the html constructed by react elements?
     // went through expo docs
 
-    const [selectedImage, setSelectedImage] = React.useState(null);
+    const [selectedImage, setSelectedImage] = React.useState(img_blank);
 
     let openImagePickerAsync = async () => {
         let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
@@ -52,11 +52,7 @@ export default function TabOneScreen() {
         await Sharing.shareAsync(selectedImage.localUri);
     };
 
-    // var selected_image_uri = Image.resolveAssetSource(img_blank).uri
-
-    //if (selectedImage !== null) {
-        //selected_image_uri = selectedImage.localUri
-    //};
+    // var selected_image_uri = 
 
     return (
         <View style={styles.container}>
@@ -70,20 +66,8 @@ export default function TabOneScreen() {
         </TouchableOpacity>
 
         {/* selected one */}
-        {/* 
-            <Image source={{ uri: selected_image_uri }} style={styles.logo} /> 
-            {selectedImage !== null ? { uri: selectedImage.localUri } : img_blank}
-            */}
 
-        {
-            selectedImage !== null ? { 
-                <Image source={{ uri: selectedImage.localUri }}
-                style={styles.thumbnail} /> 
-            } : {
-                <Image source={{ img_blank }}
-                style={styles.thumbnail} /> 
-            }
-        }
+        <Image source={{ uri: selectedImage.localUri }} style={styles.thumbnail} /> 
 
         {/* clickbait */}
         <TouchableOpacity
@@ -128,11 +112,12 @@ const styles = StyleSheet.create({
         transform: [{translateX: -5}, {rotate: '2deg'}],
     },
     button: { backgroundColor: 'green' },
-    button2: { backgroundColor: 'gray' },
+    button2: { backgroundColor: 'blue' },
     buttonText: { fontSize: 22, color: '#acdc42' },
     thumbnail: {
-        width: 42,
+        width: 142,
         height: 42,
-        resizeMode: "contain"
+        overflow: 'hidden',
+        /* resizeMode: "contain" */
     }
 });
