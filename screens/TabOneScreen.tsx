@@ -10,7 +10,7 @@ import * as Sharing from 'expo-sharing';
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 
-import ClockSimple from '../components/ClockSimple';
+import ToggleButton from '../components/toggle_button';
 
 
 import { Gyroscope } from 'expo-sensors';
@@ -56,8 +56,8 @@ export default function TabOneScreen() {
 
     return (
         <View style={styles.container}>
-        {/* <ClockSimple/> */}
-        <ClockSimple/>
+
+        <ToggleButton/>
 
         {/* img selector */}
         <TouchableOpacity

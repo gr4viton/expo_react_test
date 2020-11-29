@@ -4,10 +4,18 @@ import { Image, StyleSheet } from 'react-native';
 import { Text, View } from '../components/Themed';
 import EditScreenInfo from '../components/EditScreenInfo';
 
+import ClockSimple from '../components/ClockSimple';
+
 
 export default function TabTwoScreen() {
     return (
         <View style={styles.container}>
+        {/* <ClockSimple/> */}
+
+        <ClockSimple/>
+        <ClockSimple/>
+        <ClockSimple/>
+
         <Image source={{ uri: "https://images-cdn.9gag.com/photo/aAVwLRR_700b.jpg" }} style={{ width: 305, height: 159 }} />
         <Text style={styles.title}>bar</Text>
         <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
@@ -23,7 +31,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     title: {
-        fontSize: 222,
+        fontSize: 42,
         fontWeight: 'bold',
     },
     separator: {
