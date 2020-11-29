@@ -7,6 +7,10 @@ import { MonoText } from './StyledText';
 import { Text, View } from './Themed';
 
 export default function EditScreenInfo({ label, path }: { label:string, path: string }) {
+    // this is a component
+    // the props single variable is of object type
+    // more thoroughly it is an object containing {label, path} pair of variables
+    // with their types -- is this typescript? JSX? mhmm..
   return (
     <View>
       <View style={styles.getStartedContainer}>

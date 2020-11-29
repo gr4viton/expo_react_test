@@ -12,8 +12,13 @@ import { Text, View } from '../components/Themed';
 
 import { Gyroscope } from 'expo-sensors';
 
-export default function TabOneScreen() {
+export default function TabOneScreen() {  
+    // App function - called by default
+    // returns the html constructed by react elements?
+
     const [selectedImage, setSelectedImage] = React.useState(null);
+
+    var selected_image_uri = img_blank
 
     let openImagePickerAsync = async () => {
         let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
@@ -28,6 +33,8 @@ export default function TabOneScreen() {
 
         if (pickerResult.cancelled === true) {
             alert("Are you scared to click a foo bar image?");
+
+            selected_image_uri = img_blank
             return;
         }
 
@@ -44,7 +51,6 @@ export default function TabOneScreen() {
         await Sharing.shareAsync(selectedImage.localUri);
     };
 
-    var selected_image_uri = img_blank
     if (selectedImage !== null) {
         selected_image_uri = selectedImage.localUri
     };
