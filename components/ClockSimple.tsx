@@ -26,11 +26,12 @@ export default class ClockSimple extends React.Component {
         clearInterval(this.timerID);
     }
 
-    tick() {  
+    tick() {
         this.setState({
             date: new Date()
-        });  
+        });
     }
+
     render() {
         return (
             <View style={styles.container}>
