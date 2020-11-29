@@ -10,15 +10,17 @@ import * as Sharing from 'expo-sharing';
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 
+// import ClockSimple from '../components/ClockSimple';
+
+
 import { Gyroscope } from 'expo-sensors';
 
 export default function TabOneScreen() {  
     // App function - called by default
     // returns the html constructed by react elements?
+    // went through expo docs
 
     const [selectedImage, setSelectedImage] = React.useState(null);
-
-    var selected_image_uri = img_blank
 
     let openImagePickerAsync = async () => {
         let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
@@ -34,7 +36,6 @@ export default function TabOneScreen() {
         if (pickerResult.cancelled === true) {
             alert("Are you scared to click a foo bar image?");
 
-            selected_image_uri = img_blank
             return;
         }
 
@@ -51,6 +52,8 @@ export default function TabOneScreen() {
         await Sharing.shareAsync(selectedImage.localUri);
     };
 
+    var selected_image_uri = Image.resolveAssetSource(img_blank).uri
+
     if (selectedImage !== null) {
         selected_image_uri = selectedImage.localUri
     };
@@ -58,20 +61,24 @@ export default function TabOneScreen() {
     return (
         <View style={styles.container}>
 
+        {/* img selector */}
         <TouchableOpacity
         onPress={openImagePickerAsync}
         style={styles.button2}>
         <Text style={styles.buttonText}>IMAGE DESTRUCTION</Text>
         </TouchableOpacity>
 
-        <Image source={{ uri: selected_image_uri }} style={styles.logo} />
+        {/* selected one */}
+        <Image source={{ uri: selected_image_uri }} style={styles.logo} /> 
 
+        {/* clickbait */}
         <TouchableOpacity
         onPress={() => alert('GOT YA PAL!')}
         style={styles.button}>
         <Text style={styles.buttonText}>click me!</Text>
         </TouchableOpacity>
 
+        {/* harold */}
         <Image source={logo} style={styles.logo} />
 
         <Text style={styles.title}>FOO</Text>
